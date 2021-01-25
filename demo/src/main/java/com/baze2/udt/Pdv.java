@@ -17,6 +17,7 @@ public class Pdv  implements SQLData {
 	
 	double vrednost;
 
+
 	@Override
 	public String getSQLTypeName() throws SQLException {
 		// TODO Auto-generated method stub

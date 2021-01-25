@@ -41,6 +41,9 @@
 					<td>
 						<form:input path="nazivJM" class="form-control-sm" /></td>
 					</td>
+						<td colspan="3" align="center"><input type="submit"
+						value="Izmeni naziv jedinice mere" class="btn btn-primary">&nbsp;&nbsp;</td>
+					
 					
 				</tr>
 						<td>Stanje zaliha :</td>
@@ -53,9 +56,7 @@
 				
 		
 			
-					<td colspan="3" align="center"><input type="submit"
-						value="Izmeni naziv jedinice mere" class="btn btn-primary">&nbsp;&nbsp;</td>
-
+				
 				</tr>
 			</table>
 		</form:form>

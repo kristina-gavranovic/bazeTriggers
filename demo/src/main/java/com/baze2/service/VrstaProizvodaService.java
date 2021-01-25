@@ -18,4 +18,9 @@ private final VrstaProizvodaDAO vrstaProizvodaDAO;
 		
 		
 	}
+
+	public String save(VrstaProizvoda vrstaProizvoda) {
+		return vrstaProizvodaDAO.save(vrstaProizvoda);
+		
+	}
 }

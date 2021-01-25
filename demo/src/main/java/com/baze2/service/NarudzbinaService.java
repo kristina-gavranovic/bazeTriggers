@@ -9,6 +9,7 @@ import com.baze2.dao.ProizvodDao;
 import com.baze2.domain.Narudzbina;
 import com.baze2.domain.PravnoLice;
 import com.baze2.domain.Proizvod;
+import com.baze2.domain.StavkaNarudzbina;
 
 public class NarudzbinaService {
 
@@ -53,6 +54,27 @@ public class NarudzbinaService {
 	
 	public String updateImeRanik(Narudzbina n) {
 		return  narudzbinaDAO.updateNarudzbinaIme(n);
+		
+	}
+
+	public String updateUkupnoZaPlacanje(Narudzbina n) {
+		// TODO Auto-generated method stub
+		return narudzbinaDAO.updateUkupnoZaPlacanje(n);
+	}
+
+	public Narudzbina getNarSaStavkama(Narudzbina nar) {
+		// TODO Auto-generated method stub
+		return narudzbinaDAO.getNarSaStavkama(nar);
+	}
+
+	public StavkaNarudzbina saveStavka(StavkaNarudzbina stavka) {
+		System.out.println(stavka.toString());
+		return narudzbinaDAO.saveStavka(stavka);
+		
+	}
+
+	public void deleteStavka(int id) {
+		narudzbinaDAO.deleteStavka(id);
 		
 	}
 

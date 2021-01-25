@@ -23,6 +23,7 @@ public class Narudzbina {
 	Radnik radnik;
 	ImePrezime imePrezime;
 	ArrayList<StavkaNarudzbina> stavke;
+	double ukupnoZaPlacanje;
 	
 	public Narudzbina() {
 		stavke=new ArrayList<StavkaNarudzbina>();

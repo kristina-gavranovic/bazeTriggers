@@ -74,7 +74,7 @@ public class ProizvodController {
 	
 	
 	@RequestMapping(value = "/saveProizvod", method = RequestMethod.POST)
-	public String saveKnjiga(@ModelAttribute("proizvod") Proizvod proizvod) {
+	public String save(@ModelAttribute("proizvod") Proizvod proizvod) {
 		System.out.println(proizvod.toString());
 		proizvodService.save(proizvod);
 //		int odgovor = knjigaService.saveKnjiga(knjiga);

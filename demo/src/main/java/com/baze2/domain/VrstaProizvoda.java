@@ -1,5 +1,7 @@
 package com.baze2.domain;
 
+import com.baze2.udt.Pdv;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,10 +12,10 @@ import lombok.ToString;
 public class VrstaProizvoda {
 	int ident;
 	String naziv;
-	double stopaPdv;
+	Pdv stopaPdv;
 	
 	public VrstaProizvoda() {
-		// TODO Auto-generated constructor stub
+		stopaPdv=new Pdv();
 	}
 	
 }

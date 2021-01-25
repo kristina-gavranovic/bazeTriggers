@@ -8,7 +8,7 @@ import java.sql.SQLOutput;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import oracle.jdbc.OracleData;
+
 
 @Getter
 @Setter

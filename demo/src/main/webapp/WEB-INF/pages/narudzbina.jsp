@@ -84,6 +84,7 @@ var idZaUpdate=document.getElementById("idUpdate").value;
 			<th class="table-info">ID Radnik</th>
 			<th class="table-info">Ime radnika</th>
 			<th class="table-info">Prezime radnika</th>
+			<th class="table-info">Ukupno za placanje</th>
 			
 
 		</tr>
@@ -99,11 +100,14 @@ var idZaUpdate=document.getElementById("idUpdate").value;
 				<td  class="table-light">${n.radnik.id}</td>
 				<td  class="table-light">${n.imePrezime.ime}</td>
 				<td  class="table-light">${n.imePrezime.prezime}</td>
+				<td  class="table-light">${n.ukupnoZaPlacanje}</td>
 			 
 
 			<td align="center">
 			
-		<button onclick="window.location.href='updateNar?id=${n.id}'" type="button" class="btn btn-info">Izmeni  </button>
+		<button onclick="window.location.href='updateNar?id=${n.id}'" type="button" class="btn btn-info">Izmeni  </button></td>
+		<br>
+		<td align="center"><button onclick="window.location.href='stavke?id=${n.id}'" type="button" class="btn btn-info">Stavke  </button>
 		
 <!-- 			<input name="idZaUpdate" type="text" id="idZaUpdate" /> -->
 			

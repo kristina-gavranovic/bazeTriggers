@@ -80,6 +80,37 @@
 		
 		
 		</div>
+		
+		<div align="center">
+		<form:form action="izmeniUkupnoZaPlacanje" method="post"
+			modelAttribute="nar">
+			<table border="0" cellpadding="5">
+			
+<tr>
+					<td>
+						<form:input type="hidden" path="id" class="form-control-sm" />	
+					</td>
+
+				
+					<td>Nova vredndost ukupno za placanje:</td>
+					
+					<td>
+						<form:input path="ukupnoZaPlacanje" class="form-control-sm" />	
+					</td>
+					
+				
+		
+			
+					<td colspan="3" align="center"><input type="submit"
+						value="Izmeni ukupno za placanje" class="btn btn-primary">&nbsp;&nbsp;</td>
+
+				</tr>
+							
+			</table>
+		</form:form>
+		
+		
+		</div>
 </body>
 </html>
 

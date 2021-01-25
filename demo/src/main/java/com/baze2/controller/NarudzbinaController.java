@@ -15,18 +15,22 @@ import com.baze2.domain.JedinicaMere;
 import com.baze2.domain.Narudzbina;
 import com.baze2.domain.Proizvod;
 import com.baze2.domain.Radnik;
+import com.baze2.domain.StavkaNarudzbina;
 import com.baze2.domain.VrstaProizvoda;
 import com.baze2.service.NarudzbinaService;
 import com.baze2.service.RadnikService;
+import com.baze2.service.VrstaProizvodaService;
 
 @Controller
 public class NarudzbinaController {
 	private final RadnikService radnikService;
 	private final NarudzbinaService narudzbinaService;
+	private final VrstaProizvodaService vrstaProizvodaService;
 	
 	public NarudzbinaController() {
 		radnikService=new RadnikService();
 		narudzbinaService=new NarudzbinaService();
+		vrstaProizvodaService=new VrstaProizvodaService();
 	}
 
 	
@@ -71,6 +75,43 @@ public class NarudzbinaController {
 		
 	}
 	
+	@RequestMapping("/stavke")
+	public String idiNaStavke(@RequestParam int id, Model model,
+			RedirectAttributes redirectAttributes) {
+		System.out.println("id nar za stavke " + id );
+	
+	Narudzbina nar=narudzbinaService.get(id);
+	nar=narudzbinaService.getNarSaStavkama(nar);
+	
+	ArrayList<VrstaProizvoda> vrsteProizvoda=vrstaProizvodaService.findAll();
+	 System.out.println(nar.toString());
+	 	StavkaNarudzbina stavka=new StavkaNarudzbina();
+	 	stavka.setIdNar(nar.getId());
+	 	model.addAttribute("stavka", stavka);
+		model.addAttribute("nar", nar);
+		model.addAttribute("vrsteProizvoda", vrsteProizvoda);
+		return "narudzbinaStavke";
+		
+	}
+	
+	@RequestMapping(value = "/saveStavka")
+	public String save(@ModelAttribute("stavka") StavkaNarudzbina stavka) {
+		System.out.println(stavka.toString());
+		narudzbinaService.saveStavka(stavka);
+
+		return "redirect:/narudzbina";
+	}
+	
+	@RequestMapping(value="/deleteStavka")
+	public String rdeleteStavka(@RequestParam int id, Model model, RedirectAttributes redirectAttributes) {
+		String uspesno="";
+		narudzbinaService.deleteStavka(id);
+		
+			redirectAttributes.addFlashAttribute("message", uspesno);
+		
+		return "redirect:/narudzbina";
+	}
+	
 	@RequestMapping(value="/izmeniRadnik", method = RequestMethod.POST)
 	public String updateProizvod(@ModelAttribute Radnik r, Model model, RedirectAttributes redirectAttributes) {
 		String uspesno="";
@@ -82,7 +123,7 @@ public class NarudzbinaController {
 	}
 	
 	@RequestMapping(value="/izmeniNar", method = RequestMethod.POST)
-	public String updateNar(@ModelAttribute Narudzbina n, Model model, RedirectAttributes redirectAttributes) {
+	public String updateNar(@ModelAttribute("nar") Narudzbina n, Model model, RedirectAttributes redirectAttributes) {
 		String uspesno="";
 		narudzbinaService.updateIdRanik(n);
 		
@@ -103,9 +144,21 @@ public class NarudzbinaController {
 	
 	@RequestMapping(value="/izmeniNarIdRadnik", method = RequestMethod.POST)
 	public void izmeniNarIdRadnik(@ModelAttribute("n") Narudzbina n,  Model model) {
-		//narudzbinaService.updateIdRadnik();
+		narudzbinaService.updateIdRanik(n);
 		System.out.println(n.toString());
 		
 		
 	}
+	
+
+	@RequestMapping(value="/izmeniUkupnoZaPlacanje", method = RequestMethod.POST)
+	public String updateUkupnoZaPlacanje(@ModelAttribute("nar") Narudzbina n, Model model, RedirectAttributes redirectAttributes) {
+		String uspesno="";
+		uspesno=narudzbinaService.updateUkupnoZaPlacanje(n);
+		
+			redirectAttributes.addFlashAttribute("message", uspesno);
+		
+		return "redirect:narudzbina";
+	}
+	
 }
